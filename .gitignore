@@ -1,0 +1,7 @@
+# binaries
+*.exe
+/learn-network-protocols
+
+# UI dependencies (internal/webui/dist is committed on purpose)
+web/node_modules/
+web/*.tsbuildinfo

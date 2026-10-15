@@ -1,0 +1,32 @@
+// The contract shared by the gRPC client and server.
+// `buf generate` turns it into Go code in internal/pb/learnv1.
+syntax = "proto3";
+
+package learn.v1;
+
+option go_package = "github.com/davipferr/learn-network-protocols/internal/pb/learnv1;learnv1";
+
+service Greeter {
+  // Unary: one request, one response (like a function call).
+  rpc SayHello(HelloRequest) returns (HelloReply);
+  // Server streaming: one request, many responses on the same stream.
+  rpc CountDown(CountDownRequest) returns (stream Tick);
+}
+
+message HelloRequest {
+  string name = 1;
+  int32 times = 2;
+}
+
+message HelloReply {
+  string message = 1;
+}
+
+message CountDownRequest {
+  int32 from = 1;
+}
+
+message Tick {
+  int32 value = 1;
+  string label = 2;
+}
